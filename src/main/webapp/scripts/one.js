@@ -23,6 +23,13 @@ function CounterViewModel() {
         self.count(currentValue-1)
         }
     }
+
+    self.dogStatus = ko.computed(function(){
+        if(self.count() === 0){
+            return "DISSAPINTED"
+        }
+        return "..."
+    })
 }
 
 ko.applyBindings(new CounterViewModel(),
