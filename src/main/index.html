@@ -8,32 +8,27 @@
     <title>Document</title>
 </head>
 <body>
-<!-- 
-   This is the code from Part 2 of my video tutorials on learning Knockout JS:
-   https://www.youtube.com/watch?v=dir9iHcUkZI
+   <!-- 
+   This is the code from Part 1 of my video tutorials on learning Knockout JS:
+   https://www.youtube.com/watch?v=XhfPaNTEuTs
 -->
+
 
 <div id="knockout-app" class="card">
     <header>
        Good Dog Walks Inc.
     </header>
     <div class="card-section">
-       <h2>Toy Inventory</h2>
-       <p data-bind="visible: inventory().length === 0">You don't have any toys yet!</p>
-       <p data-bind="visible: inventory().length > 0">These are the assets we have to work with.</p>
-       
-       <button data-bind="click: addItem, enable: inventory().length < 5">+ Add Toy</button>
-       <ul class="counter-ui-container" data-bind="foreach: inventory">
-          <li>
-             <span>
-                <span data-bind="class: $data.icon"></span>
-                <span class="li_label" data-bind="text: $data.text"></span>
-             </span>
-             <button class="button_small" data-bind="click: $parent.removeItem, attr: {'item-index': $index}">
-                &times;
-             </button>
-          </li>
-       </ul>
+       <h2>Hello, <span data-bind="text: firstName"></span></h2>
+       <p>How many walks will we take today?</p>
+       <div class="counter-ui-container">
+          <button data-bind="click: decrease">-</button>
+          <span class="counter" data-bind="text: count"></span>
+          <button data-bind="click: increase">+</button>
+       </div>
+       <p data-bind="text: dogStatus">
+          Your dog is <span></span>
+       </p>
     </div>
     <footer>
        <span>Have a tail wagging day!</span>
