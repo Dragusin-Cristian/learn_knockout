@@ -22,13 +22,16 @@
        <p >These are the assets we have to work with.</p>
        
        <button >+ Add Toy</button>
-       <ul class="counter-ui-container">
+       <!-- foreach will loop through and return it as the template we define inside this tag: -->
+       <ul class="counter-ui-container" data-bind="foreach: inventory">
           <li>
              <span>
-                <span></span>
-                <span class="li_label"></span>
+                <!-- $data (special keyword) is the object of the array we are looping: -->
+                <span data-bind="class: $data.icon"></span>
+                <span class="li_label" data-bind="text: $data.text"></span>
              </span>
              <button class="button_small" >
+                <!-- multiplication html sign -->
                 &times;
              </button>
           </li>
