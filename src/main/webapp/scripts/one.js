@@ -1,36 +1,14 @@
-function CounterViewModel() {
-    var self = this
+function InventoryViewModel() {
+    var self = this;
 
-    //* make firstName an observable and give it's initial value "Wayne"
-    //* (just like useState)
-    self.firstName = ko.observable("Wayne")
+    var iconTypes = [
+        { icon: "icon-bone", text: "Bone"},
+        { icon: "icon-ball", text: "Ball"},
+        { icon: "icon-circle", text: "Circle"},
+        { icon: "icon-rabbit", text: "Rabbit"},
+     ]
 
-    //* set the value
-    self.firstName("George")
-
-    //* get the value
-    // self.firstName()
-
-    self.count = ko.observable(0)
-    self.increase = function(){
-        var currentValue = self.count()
-        self.count(currentValue+1)
-    }
-
-    self.decrease = function(){
-        if(self.count() > 0){
-            var currentValue = self.count()
-        self.count(currentValue-1)
-        }
-    }
-
-    self.dogStatus = ko.computed(function(){
-        if(self.count() === 0){
-            return "DISSAPINTED"
-        }
-        return "..."
-    })
 }
 
-ko.applyBindings(new CounterViewModel(),
-document.querySelector("#knockout-app"))
+const knockoutApp = document.querySelector("#knockout-app");
+ko.applyBindings(new InventoryViewModel(), knockoutApp);
