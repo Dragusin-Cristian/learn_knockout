@@ -21,7 +21,7 @@
        <p >You don't have any toys yet!</p>
        <p >These are the assets we have to work with.</p>
        
-       <button >+ Add Toy</button>
+       <button data-bind="click: addItem">+ Add Toy</button>
        <!-- foreach will loop through and return it as the template we define inside this tag: -->
        <ul class="counter-ui-container" data-bind="foreach: inventory">
           <li>
@@ -30,7 +30,10 @@
                 <span data-bind="class: $data.icon"></span>
                 <span class="li_label" data-bind="text: $data.text"></span>
              </span>
-             <button class="button_small" >
+             <!-- $parent accesses the parent's scope: -->
+             <!-- $index is also provided by knockout: -->
+             <button class="button_small" data-bind="click: $parent.removeItem, 
+             attr: { 'item-index': $index }" >
                 <!-- multiplication html sign -->
                 &times;
              </button>

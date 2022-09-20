@@ -9,10 +9,20 @@ function InventoryViewModel() {
      ]
 
      //* state for an array
-     self.inventory = ko.observableArray([
-        iconTypes[1],
-        iconTypes[0]
-     ])
+     self.inventory = ko.observableArray([])
+
+     self.addItem = function(){
+        var index = Math.floor(Math.random() * iconTypes.length)
+        self.inventory.push(iconTypes[index])
+     }
+
+     //* arguments we can access for working with the data and the event:
+     self.removeItem = function(data, event){
+        var index = event.target.getAttribute('item-index')
+        self.inventory.splice(index, 1)
+     }
+
+
 
 }
 
