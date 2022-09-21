@@ -1,52 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./webapp/styles/mainStyle.css">
-    <title>Document</title>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
 </head>
-<body><!-- 
-    This is the code from Part 2 of my video tutorials on learning Knockout JS:
-    https://www.youtube.com/watch?v=dir9iHcUkZI
- -->
- 
- <div id="knockout-app" class="card">
-    <header>
-       Good Dog Walks Inc.
-    </header>
-    <div class="card-section">
-       <h2>Toy Inventory</h2>
-       <p data-bind="visible: inventory().length === 0">You don't have any toys yet!</p>
-       <p data-bind="visible: inventory().length > 0">These are the assets we have to work with.</p>
-       
-       <button data-bind="click: addItem, enable: inventory().length < 4">+ Add Toy</button>
-       <!-- foreach will loop through and return it as the template we define inside this tag: -->
-       <ul class="counter-ui-container" data-bind="foreach: inventory">
-          <li>
-             <span>
-                <!-- $data (special keyword) is the object of the array we are looping: -->
-                <span data-bind="class: $data.icon"></span>
-                <span class="li_label" data-bind="text: $data.text"></span>
-             </span>
-             <!-- $parent accesses the parent's scope: -->
-             <!-- $index is also provided by knockout: -->
-             <button class="button_small" data-bind="click: $parent.removeItem, 
-             attr: { 'item-index': $index }" >
-                <!-- multiplication html sign -->
-                &times;
-             </button>
-          </li>
-       </ul>
-    </div>
-    <footer>
-       <span>Have a tail wagging day!</span>
-    </footer>
- </div>
-
- 
-    <script type='text/javascript' src='./webapp/third-party/knockout/knockout-3.5.1.js'></script>
-    <script src="./webapp/scripts/one.js"></script>
+<body>
+   <!-- This is a *view* - HTML markup that defines the appearance of your UI -->
+<div id="ko-app">
+   <p>First name: <input data-bind="value: firstName" /></p>
+   <p>Last name: <input data-bind="value: lastName" /></p>
+   
+   <p data-bind="text: fullName"></p>
+   
+   <button data-bind="click: toUpperCase">to upper case</button>
+</div>
 </body>
 </html>
+
+

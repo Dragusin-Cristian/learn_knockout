@@ -1,30 +1,18 @@
-function InventoryViewModel() {
-    var self = this;
-
-    var iconTypes = [
-        { icon: "icon-bone", text: "Bone"},
-        { icon: "icon-ball", text: "Ball"},
-        { icon: "icon-circle", text: "Circle"},
-        { icon: "icon-rabbit", text: "Rabbit"},
-     ]
-
-     //* state for an array
-     self.inventory = ko.observableArray([])
-
-     self.addItem = function(){
-        var index = Math.floor(Math.random() * iconTypes.length)
-        self.inventory.push(iconTypes[index])
-     }
-
-     //* arguments we can access for working with the data and the event:
-     self.removeItem = function(data, event){
-        var index = event.target.getAttribute('item-index')
-        self.inventory.splice(index, 1)
-     }
-
-
-
+// This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
+function AppViewModel() {
+    var self = this
+    self.firstName = ko.observable("Dragusin")
+    self.lastName = ko.observable("Cristian")
+    
+    self.fullName = ko.computed(function(){
+        return self.firstName() + " " + self.lastName()
+    })
+    
+    self.toUpperCase = function(){
+        var lName = self.lastName()
+        self.lastName(lName.toUpperCase())
+    }
 }
 
-const knockoutApp = document.querySelector("#knockout-app");
-ko.applyBindings(new InventoryViewModel(), knockoutApp);
+// Activates knockout.js
+ko.applyBindings(new AppViewModel(), document.getElementById("ko-app"));
